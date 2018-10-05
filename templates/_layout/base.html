@@ -1,0 +1,41 @@
+<!-- здесь просто подкачка tag library  -->
+<!DOCTYPE html>
+{% load bootstrap3 %}
+{% load staticfiles %}
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <title>{% block title %}Personal diary!{% endblock %}</title>
+        {% bootstrap_css%}
+        <link rel="stylesheet" href="{% static 'main.css'%}">
+    </head>
+    <body>
+        <!-- nav menu         -->
+        {% include '_partials/navbar.html'%}
+        <!-- messages block -->
+        <div class="container">
+            <div class="row">
+                <div class="col col-6">
+                    {% if messages%}
+                        {% for message in messages %}
+                        <div class="alert alert-{{message.tags}}">
+                            {{message}}
+                        </div>
+                        {% endfor %}
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+
+        <!-- main content -->
+
+        <main role="main" class="container">
+            {% block content %}
+            {% endblock %}
+        </main>
+        {% bootstrap_javascript %}
+
+
+
+    </body>
+</html>

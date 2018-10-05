@@ -1,0 +1,40 @@
+<nav class="navbar navbar-default">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              <a class="navbar-brand" href="{% url 'home' %}">Dairy!</a>
+        </div>
+        <!-- ul navbar left -->
+            <ul class="nav navbar-nav">
+                <li class="nav navbar-text">{{user.username}}</li>
+                <li><a href="">List of Posts</a></li>
+                <li><a href="#"><i class="glyphicon glyphicon-plus">Create Post</i></a></li>
+                <li><a href="#"><i class="glyphicon glyphicon-trash"></i></a></li>
+                <!-- <li><a href="{ url 'wireframe' }">Kenneth words</a></li> -->
+                <form class="navbar-form navbar-left" method="GET" action="#">
+                    <div class="form-group">
+                      <input type="search" class="form-control" placeholder="Search" name='q'>
+                    </div>
+                    <button type="submit" class="btn btn-success"><i class="glyphicon glyphicon-search"></i></button>
+                </form>
+           </ul>
+
+            <ul class="nav navbar-nav navbar-right">
+            {% if user.is_authenticated%}
+            <!-- #интересная находка по поводу такой ссыли -->
+                <!-- <li class="navbar-text"> user.profile.full_name }</li> -->
+                <li class="nav navbar-text">Welcome, {{user.username}}</li>
+                <li><a href="{% url 'registration:logout' %}">Log out</a></li>
+                <li><a href="{% url 'registration:profile_view' %}">Your Profile</a></li>
+            {% else%}
+            <li><a href="{% url 'registration:login' %}">Log In</a></li>
+            <li><a href="{% url 'registration:signup' %}">Sign Up</a></li>
+            {% endif%}
+        </ul>
+    </div>
+</nav>
