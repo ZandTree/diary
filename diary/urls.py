@@ -7,8 +7,8 @@ from django.views.generic import TemplateView
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^registration/',include('registration.urls',namespace='registration')),
-    #url(r'^registration/',include('django.contrib.auth.urls')),
+    url(r'^account/',include('account.urls',namespace='account')),
+    url(r'^account/',include('django.contrib.auth.urls')),
     url(r'^$',TemplateView.as_view(template_name='_layout/home.html'),name='home'),
 
 ]

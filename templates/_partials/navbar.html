@@ -29,11 +29,11 @@
             <!-- #интересная находка по поводу такой ссыли -->
                 <!-- <li class="navbar-text"> user.profile.full_name }</li> -->
                 <li class="nav navbar-text">Welcome, {{user.username}}</li>
-                <li><a href="{% url 'registration:logout' %}">Log out</a></li>
-                <li><a href="{% url 'registration:profile_view' %}">Your Profile</a></li>
+                <li><a href="{% url 'account:logout' %}">Log out</a></li>
+                <li><a href="{% url 'account:profile_view' %}">Your Profile</a></li>
             {% else%}
-            <li><a href="{% url 'registration:login' %}">Log In</a></li>
-            <li><a href="{% url 'registration:signup' %}">Sign Up</a></li>
+            <li><a href="{% url 'account:login' %}">Log In</a></li>
+            <li><a href="{% url 'account:signup' %}">Sign Up</a></li>
             {% endif%}
         </ul>
     </div>

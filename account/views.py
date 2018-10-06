@@ -20,8 +20,8 @@ User = get_user_model()
 class SignUp(FormView):
     form_class = CreateUserForm
     # in this case niet nodig model = User
-    template_name = 'registration/signup.html'
-    success_url = reverse_lazy('registration:login')
+    template_name = 'account/signup.html'
+    success_url = reverse_lazy('account:login')
 
     # def dispatch(self,request,*args,**kwargs):
     #     if request.user.is_authenticated():
@@ -42,7 +42,7 @@ class SignUp(FormView):
 class ProfileView(LoginRequiredMixin,DetailView):
     model = Profile
     context_object_name = 'profile'
-    template_name = 'registration/profile.html'
+    template_name = 'account/profile.html'
 
     def get_object(self,queryset=None):
         obj = get_object_or_404 (
@@ -58,8 +58,8 @@ class ProfileUpdate(LoginRequiredMixin,UpdateView):
     form_class = ProfileUserForm
     model = Profile
     context_object_name = 'profile'
-    template_name = 'registration/profile_edit.html'
-    success_url = reverse_lazy('registration:profile_view')
+    template_name = 'account/profile_edit.html'
+    success_url = reverse_lazy('account:profile_view')
 
     def get_object(self,queryset=None):
         return self.request.user.profile
@@ -75,7 +75,7 @@ class ProfileUpdate(LoginRequiredMixin,UpdateView):
 
 class MyPasswordChangeView(PasswordChangeView):
     #docs built-in success_url = reverse_lazy('password_change_done')
-    success_url = reverse_lazy('registration:profile_view')
+    success_url = reverse_lazy('account:profile_view')
     def form_valid(self,form):
         messages.success(self.request,'Password has been updated!')
         return super().form_valid(form)
