@@ -2,3 +2,5 @@
 db.sqlite3
 view_custom_form.py
 z_reset_passord_dump/
+media
+sent_emails

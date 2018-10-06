@@ -20,6 +20,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'registration',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
@@ -29,7 +30,7 @@ INSTALLED_APPS = [
     #third party
     'bootstrap3',
     # my own
-    'registration',    
+
     # built-in
 
 ]
@@ -108,15 +109,12 @@ USE_L10N = True
 
 USE_TZ = True
 
-# email console-based
-EMAIL_BACKEND = 'django.core.mail.backends.filebased.EmailBackend'
-EMAIL_FILE_PATH = os.path.join(BASE_DIR,'sent_emails')
-# logins
-LOGIN_REDIRECT_URL ='home'
-#LOGIN_URL = 'login'
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+# EMAIL_BACKEND = 'django.core.mail.backends.filebased.EmailBackend'
+# EMAIL_FILE_PATH = os.path.join(BASE_DIR,'sent_emails')
 
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/1.11/howto/static-files/
+LOGIN_REDIRECT_URL ='home'
+
 
 STATIC_URL = '/static/'
 STATIC_DIRS = [os.path.join(BASE_DIR,'static')]
