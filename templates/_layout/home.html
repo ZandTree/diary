@@ -1,22 +1,27 @@
 {% extends '_layout/base.html' %}
+{% load staticfiles %}
 {% load bootstrap3 %}
 {% load static %}
+{% block title %}StartPage | {{block.super}}{% endblock %}
 
 {% block content %}
-<div class="row">
-    <div class="col col-md-6">
-        <article class="media content-section">
-            <h1  class="">Django bookmarks</h1>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                </p>
-        </article>
-    </div>
-    <div class="col col-md-6">
-        <article class="media content-section">
-            <h1  class="">Django bookmarks</h1>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                </p>
-        </article>
-    </div>
+<div class="jumbotron">
+    <h1>Welcome to Our Club </h1>
+    <h2>Diary for Introverts!</h2>
+    <h3>There are no ads and no third-party tracking.</h3>
+
 </div>
+<!-- <div class="row">
+    <div class="col col-md-2"></div>
+    <div class="col col-md-8">
+        <article class="media content-section">
+            <h1  class="">Welcome to our club</h1>
+                <p>
+                    Welcome to Our Club Diary for Introverts!
+                    There are no ads and no third-party tracking.
+                </p>
+        </article>
+    </div>
+    <div class="col col-md-2"></div>
+</div> -->
 {% endblock %}

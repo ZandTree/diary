@@ -1,0 +1,23 @@
+{% extends '_layout/base.html' %}
+{% load bootstrap3 %}
+{% load static %}
+{% block title %}Delete Post| {{block.super}} {% endblock title %}
+{% block content %}
+<h2>Would you really like to delete this posts
+
+
+<article class="media content-section">
+   <div class="media-body">
+    <form method="post">
+        {% csrf_token %}
+        <!-- no need for <form > tag  = just a button -->
+        <button type="submit" class="btn btn-danger alarm">
+          Yes,Delete
+        </button>
+        <a href="{% url 'post:list'%}" class="btn btn-success pull-right">No, cancel</a>
+    </form>
+
+    </div>
+</article>
+
+{% endblock content %}

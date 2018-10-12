@@ -1,0 +1,42 @@
+{% extends '_layout/base.html' %}
+{% load bootstrap3 %}
+{% load humanize %}
+{% load static %}
+{% block title %}Post Detail | {{block.super}}{% endblock %}
+
+{% block content %}
+<img class="img-circle account-img" src="{{user.profile.get_avatar_url}}" alt="user_foto">
+<article class="media content-section">
+   <div class="media-body">
+    <div class="article-metadata">
+        <h5>{{post.author}}</h5>
+      <small class="text-muted"> {{post.date_posted|date:"d F Y, D "}} </small>
+      (<small class="text-muted"> {{post.date_posted|naturaltime}}</small>)
+    </div>
+    <h2>{{post.title}}</a></h2>
+    {% if post.image %}
+    <img  src="{{post.image.url}}" alt='photo'>
+    {% endif %}
+    <p class="article-content"> {{post.text_html|safe}} </p>
+  </div>
+</article>
+<div class="row">
+    <div class="col col-md-4">
+        <a href="{% url 'post:update' pk=post.pk %}"><button type="submit" class="btn btn-success">Edit Post</button></a>
+    </div>
+    <div class="col col-md-4">
+
+    </div>
+    <div class="col col-md-4 ">
+        <a href="{% url 'post:delete' pk=post.pk %}"><button type="submit" class="btn btn-danger alarm pull-right"><span class="glyphicon glyphicon-remove-sign" aria-hidden="true"></span> Delete Post</button></a>
+    </div>
+</div>
+<div class="row">
+    <div class="col col-md-4"></div>
+    <div class="col col-md-4 ">
+        <h4 class="text-center"><a href="{% url 'post:list' %}"> <span class="glyphicon glyphicon-menu-left" aria-hidden="true"></span> Back to the list of posts</a></h4>
+    </div>
+    <div class="col col-md-4"></div>
+</div>
+
+{% endblock content %}

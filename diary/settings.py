@@ -3,7 +3,7 @@ import os
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 TEMPLATE_DIR = os.path.join(BASE_DIR,'templates')
-
+STATIC_DIR = os.path.join(BASE_DIR,'static')
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.11/howto/deployment/checklist/
@@ -27,11 +27,14 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django.contrib.admin',
     'django.contrib.auth',
+    'django.contrib.humanize',
     #third party
     'bootstrap3',
     # my own
+    'post',
+    'suggestion',
 
-    # built-in
+
 
 ]
 
@@ -110,16 +113,27 @@ USE_L10N = True
 USE_TZ = True
 
 #EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+#
 EMAIL_BACKEND = 'django.core.mail.backends.filebased.EmailBackend'
 EMAIL_FILE_PATH = os.path.join(BASE_DIR,'sent_emails')
+#
+# EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+# EMAIL_HOST = 'smtp.gmail.com'
+# EMAIL_PORT = 587 #465
+# EMAIL_USE_TLS = True  #True
+# # EMAIL_USE_SSL = True
+# EMAIL_HOST_USER = 'tspan2017@gmail.com'                                  # os.environ.get('EMAIL_USER')
+# EMAIL_HOST_PASSWORD = "....."                             # os.environ.get('EMAIL_PASS')
 
+
+#
 LOGIN_REDIRECT_URL ='home'
-
-
+#
 STATIC_URL = '/static/'
-STATIC_DIRS = [os.path.join(BASE_DIR,'static')]
+STATICFILES_DIRS = [STATIC_DIR,]
+# django.core.exceptions.ImproperlyConfigured: The STATICFILES_DIRS setting should not contain the STATIC_ROOT setting
 #STATIC_ROOT = os.path.join(os.path.dirname(BASE_DIR),'static_cdn')
-STATIC_ROOT = os.path.join(BASE_DIR,'static')
+#STATIC_ROOT = os.path.join(BASE_DIR,'static')
 
 MEDIA_URL = '/media/'
 #MEDIA_ROOT = os.path.join(os.path.dirname(BASE_DIR),'media_cdn')

@@ -1,0 +1,30 @@
+{% extends '_layout/base.html' %}
+{% load bootstrap3 %}
+{% load static %}
+
+{% block title %}Create Post | {{block.super}}{% endblock %}
+
+{% block content %}
+{% if create_view %}
+<h1>Create Your Post</h1>
+{% else %}
+<h1>Edit Your Post</h1>
+{% endif %}
+<article class="media content-section">
+   <div class="media-body">
+    <form  method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <fieldset class="form-group">
+            <legend class="border-bottom mb-4">Blog post</legend>
+        {% bootstrap_form form%}
+        </fieldset>
+        <div class="form-group">
+            <button class="btn btn-success" type="submit">Post</button>
+        </div
+    </form>
+  </div>
+</article>
+
+
+<!-- end for each post -->
+{% endblock content %}

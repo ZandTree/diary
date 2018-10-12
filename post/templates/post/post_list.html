@@ -1,0 +1,30 @@
+{% extends '_layout/base.html' %}
+{% load bootstrap3 %}
+{% load humanize %}
+{% load static %}
+{% block title %}List of Posts | {{block.super}}{% endblock %}
+
+{% block content %}
+<h2>Lets get started</h2>
+{% for post in object_list%}
+<!-- for each post -->
+<article class="media content-section ">
+   <div class="media-body">
+    <div class="article-metadata">
+        <h5><a href="{{post.get_absolute_url}}">{{post.author}}</a></h5>
+      <small class="text-muted"> {{post.date_posted|date:"d F Y, D "}} </small>
+    </div>
+    <h2><a class="mr-2" href="{{post.get_absolute_url}}"> {{post.title}}</a></h2>
+    {% if post.image %}
+        <img src="{{post.get_image_url}}" alt="photo">
+    {% endif%}
+    <p class="article-content"> {{post.text_html|truncatewords:50|apnumber|safe}} </p>
+  </div>
+</article>
+
+{% endfor %}
+
+{% include 'post/_compounds/pagination.html' %}
+
+<!-- end for each post -->
+{% endblock content %}

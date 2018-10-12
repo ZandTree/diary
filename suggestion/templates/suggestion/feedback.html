@@ -1,0 +1,26 @@
+{% extends '_layout/base.html' %}
+{% load bootstrap3 %}
+
+{% load static %}
+{% block title %}Feedback | {{block.super}}{% endblock %}
+
+{% block content %}
+
+<article class="media content-section">
+   <div class="media-body">
+    <form  method="POST" >
+        {% csrf_token %}
+        {% if form.errors%}
+            <p style='color:green;'>Please correct {{form.errors}}</p>
+        {% endif %}
+        <fieldset class="form-group">
+            <legend class="border-bottom mb-4">Suggest an idea</legend>
+        {% bootstrap_form form%}
+        </fieldset>
+        <div class="form-group">
+            <button class="btn btn-success" type="submit">Send</button>
+        </div
+    </form>
+  </div>
+</article>
+{% endblock content%}
